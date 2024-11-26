@@ -1,0 +1,384 @@
+@charset "utf-8";
+
+
+html, body {
+  height: 100%;          /* Ensure the body and html fill the full height */
+  margin: 0;             /* Remove any default margin */
+  display: flex;         /* Use Flexbox to manage layout */
+  flex-direction: column; /* Stack children vertically */
+}
+.wrapper {
+  flex: 1;               /* Pushes the footer to the bottom when content is insufficient */
+  display: flex;         /* Allows flexibility for additional layout within the wrapper */
+  flex-direction: column;
+}
+footer {
+  flex-shrink: 1;        /* Prevents footer from shrinking or overlapping */
+}
+
+
+/* Base Colors and Gradients */
+html {
+  --section-background-color: linear-gradient(
+    to bottom left,
+    rgba(17, 16, 16, 0.58),
+    rgba(12, 8, 24, 0.9)
+  );
+
+  --image-gradient: linear-gradient(
+    to bottom left,
+    rgba(17, 16, 16, 0.68),
+    rgba(12, 10, 22, 0.86)
+  );
+
+  --imp-text-color: #c770f0;
+}
+
+
+
+
+/* Navigation Links */
+.nav-link,
+.nav-item {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-item:hover {
+  color: var(--imp-text-color);
+}
+
+.nav-link {
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #ffd700 !important; /* Gold color for hover effect */
+}
+
+
+/* Headings */
+.heading {
+  font-family: "Georgia", serif;
+  font-style: normal;
+  font-size: 3rem; /* Larger heading for better impact */
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 2rem; /* Adds space below the heading */
+}
+
+/* Subheading */
+.subheading {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-size: 1.75rem; /* Slightly larger subheading */
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+/* secheading */
+.secheading {
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Body Text */
+.body-text {
+  font-family: "Georgia", serif;
+  font-style: normal;
+  font-size: large;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  color: #ffffff;
+  text-align: justify;
+  margin-bottom: 1.5rem; /* Adds spacing between paragraphs */
+}
+
+/* Button Styling */
+.btn {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.5em 1.2em;
+  border: 1px solid var(--imp-text-color);
+  color: var(--imp-text-color);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--imp-text-color);
+  color: #ffffff;
+}
+
+/* Section Backgrounds */
+.section {
+  background: var(--section-background-color);
+  padding: 3em 1.5em;
+  border-radius: 8px;
+  margin: 1.5em 0; /* Increased margin for better spacing */
+}
+
+/* Image Overlay */
+.image-overlay {
+  background: var(--image-gradient);
+  border-radius: 10px;
+}
+
+/* Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/* Ambassador link styling */
+.ambassador {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  text-align: center; /* Center align ambassador link */
+  color: #c770f0;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px; /* Adds space above the link */
+}
+
+.ambassador:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Spacing adjustments */
+.mb-4 {
+  margin-bottom: 2rem; /* Larger bottom margin for better spacing */
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+/* Button styles */
+.btn.book-now {
+  font-size: 1.1rem;
+  padding: 0.8em 1.5em;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+/* Global styling for the paragraph in the landing section */
+#landing .body-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  padding: 10px 20px;
+  text-align: justify;
+  text-align-last: center;
+  margin: 0 auto 20px;
+}
+
+/* General styling for all paragraphs in this section */
+.row .col-sm-4 p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding: 10px 15px;
+  text-align: justify;
+  text-align-last: center;
+  border-radius: 8px;
+  margin-bottom: 1.5rem; /* Increased margin between paragraphs */
+}
+
+/* Optional hover effect on paragraphs */
+.row .col-sm-4 p:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  color: black;
+}
+
+/* Ensure the images are responsive and properly resized within their container */
+.benefit {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Optional: Adding a hover effect to make the images look interactive */
+.benefit:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2rem; /* Smaller heading on mobile */
+  }
+
+  .subheading {
+    font-size: 1.25rem; /* Slightly smaller subheading */
+  }
+
+  .benefit {
+    width: 100%;
+    height: auto;
+  }
+}
+
+list-inline-item a {
+  color: #c770f0;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+
+.list-inline-item a:hover {
+  color: #6c1e99;
+}
+
+.small {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* "Go to Top" button styling */
+#goToTop {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: none;
+  z-index: 1000;
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px 20px; /* Rectangle shape */
+  font-size: 1.2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#goToTop:hover {
+  background-color: #c770f0;
+  color: white;
+}
+
+/* Task Card Styles */
+.card {
+    background-color: #1f1f1f; /* Dark card background */
+    border-radius: 8px; /* Rounded corners */
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Task Card Hover Effect */
+.card:hover {
+    transform: translateY(-5px); /* Slightly lift the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Task Title */
+.card-title {
+    color: white; /* White text for task title */
+    font-size: 1.1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+
+/* Task Due Date */
+.text-muted {
+    color: #aaa; /* Lighter gray for due dates */
+    font-family: "Georgia", serif;
+    font-style: normal;
+    font-size: 1rem;
+
+}
+
+/* Task List Container */
+.container {
+    margin-top: 50px;
+    padding: 20px;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .task-title {
+        font-size: 1rem; /* Smaller text for smaller screens */
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+}
+
+footer a {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #1dbf73; /* A vibrant green for hover */
+  text-decoration: underline;
+}
+
+footer i {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer i:hover {
+  color: #1dbf73;
+  transform: scale(1.2);
+}
+
+footer h5 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #fff;
+}
+
+footer p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #a0a0a0;
+}
+
+/* Hover effect  for the delete and update todo list icon  */
+.icon-link {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-link:hover {
+  color: #a29bfe; /* A light purple shade */
+  transform: scale(1.2); /* Slightly enlarges the icon on hover */
+}
+
+.icon-link:active {
+  color: #6c5ce7; /* A darker purple for the active state */
+}
