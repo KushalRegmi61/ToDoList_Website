@@ -1,0 +1,26 @@
+{% from "bootstrap5/form.html" import render_form %}
+
+
+{% extends "base.html" %}
+{% block content %}
+
+
+<!-- Secection to render new to-do list -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <!-- Update Cafe Form -->
+            <div class="card shadow-sm border-0 rounded-lg">
+                <div class="card-body">
+                    <h2 class="subheading text-center">Add New To-Do List Below</h2>
+                    <!-- Render Form with Novalidate and Custom Submit Button -->
+                    {{ render_form(form, novalidate=True, button_map={"submit": "success"}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
