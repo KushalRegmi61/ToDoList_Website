@@ -1,0 +1,34 @@
+{% from "bootstrap5/form.html" import render_form %}
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<!-- Secection to render new to-do list -->
+<main class="mb-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card shadow" style="background-color: #1e1e2f; border: none; border-radius: 10px;">
+                    <div class="card-body p-5">
+                        <div class="page-heading py-5 text-center">
+                            <h1 class="heading">Edit ToDo List</h1>
+                            <span class="subheading" style="color: #d8b4fe;">Update your Todo List details</span>
+                            <hr style="border-top: 1px solid #d8b4fe; margin: 2rem 0;" />
+                        </div>
+                        <div class="form-container">
+                            {{ render_form(form, novalidate=True, button_map={"submit": "success"}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+{% endblock %}
