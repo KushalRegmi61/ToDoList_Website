@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero bg-dark text-white text-center ">
+    <div class="container">
+        <h1 class="subheading pb-4" style="font-size: 3rem; color: #6f42c1;">Take Control of Your Tasks</h1>
+        <p class="body-text text-center mb-4 pb-2" style="font-size: 1.3rem;">Stay organized, reduce stress, and accomplish more with our easy-to-use Task Manager.</p>
+        <a href="{{url_for('todo_lists')}}" class="btn btn-lg btn-primary shadow-lg px-5 py-3" style="font-size: 1.2rem;">
+            Get Started Now
+        </a>
+    </div>
+    <hr style="border-top: 1px solid #d8b4fe; margin: 2rem 0;" />
+</section>
+
+<!-- Flased message section -->
+<div class="container py-2">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% endwith %}
+</div>
+
+<!-- Features Section -->
+<section class="features  bg-dark pb-3">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon mb-3">
+                    <i class="bi bi-check-circle" style="font-size: 2.5rem; color: #28a745;"></i>
+                </div>
+                <h4 class="font-weight-bold" style="font-size: 1.8rem;">Organize Your Tasks</h4>
+                <p class="text-muted" style="font-size: 1.2rem;">Create, manage, and prioritize tasks to boost your productivity.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon mb-3">
+                    <i class="bi bi-calendar-check" style="font-size: 2.5rem; color: #17a2b8;"></i>
+                </div>
+                <h4 class="font-weight-bold" style="font-size: 1.8rem;">Track Your Progress</h4>
+                <p class="text-muted" style="font-size: 1.2rem;">Keep track of your task completion with our intuitive interface.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="feature-icon mb-3">
+                    <i class="bi bi-emoji-smile" style="font-size: 2.5rem; color: #ffc107;"></i>
+                </div>
+                <h4 class="font-weight-bold" >Achieve Your Goals</h4>
+                <p class="text-muted" style="font-size: 1.2rem;">Stay motivated and reach your goals faster by staying organized.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta py-5 text-white text-center rounded" style="background: linear-gradient(135deg, #6f42c1, #8e44ad);">
+    <div class="container">
+        <h2 class="subheading mb-4" style="font-size: 2.5rem;">Ready to Get Started?</h2>
+        <p class="text-muted mb-4 pt-4" style="font-size: 1.3rem;">Start creating your first To-Do List today and take control of your tasks.</p>
+        <a href="{{url_for('add_new_todo_list')}}" class="btn btn-light btn-lg shadow-lg px-5 py-3" style="font-size: 1.2rem; color: #ffffff;">
+            Create Your First  TODO List
+        </a>
+    </div>
+</section>
+{% endblock %}
