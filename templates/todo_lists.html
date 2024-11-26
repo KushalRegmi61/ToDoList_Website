@@ -1,0 +1,190 @@
+{% from "bootstrap5/form.html" import render_form %}
+
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Page Header -->
+<!-- <div class="text-center mb-4 py-5 rounded shadow-lg" style="background: linear-gradient(135deg, #6f42c1, #8e44ad); color: white; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);">
+    <h1 class="mb-3 subheading" style="font-size: 2.5rem;">
+        Let’s Get Stuff Done.. Maybe.
+    </h1>
+    <div class="d-flex justify-content-center align-items-center flex-wrap gap-4 pt-4">
+        <p class="lead body-text mb-0 d-flex align-items-center" >
+            <span class="fw-bold">Add a Task, Because Your Brain’s Too Full of Useless Trivia!.</span>
+        </p>
+    </div>
+</div> -->
+<!-- Page Header -->
+<div class="text-center mb-4 py-5 rounded shadow-lg" style="background: linear-gradient(135deg, #6f42c1, #8e44ad); color: white;">
+
+    <div class="text-center my-3">
+        <h1 class="subheading" style=" font-size: 3rem;">Task Manager</h1>
+        <p class="text-muted lead py-2" style="font-size: large;">
+            Sort your tasks, skip the stress, and maybe even finish something today.
+        </p>
+    </div>
+
+    <!-- Add New Task Button -->
+    <div class="text-center mb-4 pt-2">
+        <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#newTaskModal" style="padding: 10px 20px; font-size: 1rem; color: #ffffff;">
+            +  New To-Do List
+        </button>
+    </div>
+</div>
+
+<!-- Modal for New ToDo List Form -->
+<div class="modal fade" id="newTaskModal" tabindex="-1" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title body-text text-center" id="newTaskModalLabel">Create a New List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body
+            ">
+                {{ render_form(form, novalidate=True) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-2">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% endwith %}
+</div>
+<!-- displaying the existing todo list  in form of anchor tags -->
+
+
+<!-- <section class="text-center subheading py-lg-2">
+    {% for todo_list in todo_lists %}
+    <a class="btn btn-default btn-lg" href="{{ url_for('new_task', todo_id=todo_list.id) }}">{{ todo_list.name }}</a>
+    {% endfor %}
+</section> -->
+
+<div class="container my-2">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 text-white subheading">Your To-Do Lists</h1>
+        {% if todo_lists|length == 0 %}
+        <p class="text-muted" style="font-size: large;">No lists found. Create a new to-do list.</p>
+        {% else %}
+        <p class="text-muted" style="font-size: large;">Select a list to manage tasks.</p>
+        <hr>
+        {% endif %}
+        
+    </div>
+
+    <!-- Cards Section -->
+    <div class="row justify-content-center">
+        {% for todo_list in todo_lists %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card shadow-lg h-100 border-0" style="background-color: #2c2f3f; color: white; border-radius: 10px;">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <!-- Title Section -->
+                    <div class="text-center">
+                        <h5 class="card-title subheading mb-2" style="color: #9b59b6; ">{{ todo_list.name }}</h5>
+                    </div>
+
+                    <!-- Description Section -->
+                    <div class="text-left py-3">
+                        <p class="card-text text-muted mb-2" style="font-size: 1rem;">
+                            <strong>Due Date:</strong> {{ todo_list.due_date}}
+                        </p>
+                        <p class="card-text text-muted mb-2" style="font-size: 1rem;">
+                            <strong>Time:</strong>  {{ todo_list.due_time}}
+                        </p>
+                    </div>
+
+                    <!-- Action Buttons Section -->
+                    <div class="d-flex justify-content-between mt-auto">
+                        <!-- Open List Button -->
+                        <a href="{{ url_for('new_task', todo_id=todo_list.id) }}" 
+                           class="btn btn-purple py-2  align-self-start" 
+                           style="background-color: #9b59b6; border: none; color: white; font-weight: bold; border-radius: 5px; transition: transform 0.3s, background-color 0.3s;">
+                            Open List
+                        </a>
+                    
+                        <!-- Update and Delete Icons -->
+                        <div class="d-flex align-items-center ps-5">
+                            <a href="{{ url_for('edit_todo_list', todo_id=todo_list.id) }}" class="icon-link text-light me-3" title="Edit List">
+                                <i class="fas fa-edit" style="font-size: 15px;"></i>
+                            </a>
+                            <!-- Modal Trigger for Delete Confirmation -->
+                            <a href="#" class="icon-link text-light" data-bs-toggle="modal" data-bs-target="#deleteModal{{ todo_list.id }}" title="Delete List">
+                                <i class="fas fa-trash-alt" style="font-size: 15px;"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- Modal for Delete Confirmation -->
+            <div class="modal fade" id="deleteModal{{ todo_list.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ todo_list.id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel{{ todo_list.id }}">Delete To-Do List</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the list "{{ todo_list.name }}"?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a href="{{ url_for('delete_todo_list', todo_id=todo_list.id) }}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+
+<!-- Custom Styles -->
+<style>
+    .card-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .card-body a {
+        transition: all 0.3s;
+    }
+
+    .card-body a:hover {
+        color: #9b59b6;
+    }
+
+    .btn-purple:hover {
+        background-color: #8e44ad;
+        transform: scale(1.05);
+    }
+</style>
+
+
+
+    {% endblock %}
+
+
+
