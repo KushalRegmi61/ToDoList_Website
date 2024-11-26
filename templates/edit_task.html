@@ -1,0 +1,44 @@
+{% from "bootstrap5/form.html" import render_form %}
+
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Page Content-->
+
+<!-- Page Header -->
+<!-- <header class="masthead text-white text-center py-2">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1 class="heading">Edit Task</h1>
+                    <span class="subheading">Update your task details</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header> -->
+
+<main class="mb-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="card shadow" style="background-color: #1e1e2f; border: none; border-radius: 10px;">
+                    <div class="card-body p-5">
+                        <div class="page-heading py-5 text-center" >
+                            <h1 class="heading" >Edit Task</h1>
+                            <span class="subheading" style="color: #d8b4fe;">Update your task details</span>
+                            <hr style="border-top: 1px solid #d8b4fe; margin: 2rem 0;" />
+                        </div>
+                        <div class="form-container">
+                            {{ render_form(form, novalidate=True) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    
+    {% endblock %}
+    
