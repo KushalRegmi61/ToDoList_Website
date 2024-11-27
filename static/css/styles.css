@@ -66,11 +66,10 @@ html {
 .logo {
   display: inline-flex;
   align-items: center;
-  font-family: "Leckerli One", cursive; /* Modern and professional font */
-  font-size: 2.5rem; /* Larger text size for prominence */
-  font-weight: 600; /* Bolder weight for better visibility */
+  font-family: "Leckerli One", cursive;
+  font-size: 2rem;
+  font-weight: 800; /* Make the text bolder */
   color: #00bcd4; /* Light teal/cyan color to stand out from the rest */
-  text-transform: uppercase; /* Makes the logo text all caps for consistency */
   letter-spacing: 2px; /* Spacing between the letters for a clean, modern look */
   transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions for hover effects */
 }
