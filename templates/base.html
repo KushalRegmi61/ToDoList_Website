@@ -10,7 +10,8 @@
     <title>TO | DO LIST</title>
   
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../static/assets/img/favicon.ico" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='assets/img/favicon.ico') }}" />
+    
   
     {% block styles %}
     <!-- Load Bootstrap-Flask CSS here -->
