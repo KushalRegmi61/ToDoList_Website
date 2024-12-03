@@ -24,6 +24,7 @@ from smtplib import SMTP
 load_dotenv()
 EMAIL = os.getenv("EMAIL")
 PASSWORD= os.getenv("EMAIL_PASSWORD")
+DB_URL = os.getenv("DB_URL", "sqlite:///todo.db")
 
 #global variables 
 completed_tasks=[]
@@ -49,7 +50,7 @@ class Base(DeclarativeBase):
     pass
 
 # Connect to the database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -221,7 +222,7 @@ def login():
      
         flash(f"Welcome back, {user.name}!", "success")
         next_page = request.args.get('next')  # Handle redirection to the originally requested page
-        return redirect(next_page) if next_page else redirect(url_for('home'))
+        return redirect(next_page) if next_page else redirect(url_for('todo_lists'))
 
     return render_template('login.html', form=form)
 
