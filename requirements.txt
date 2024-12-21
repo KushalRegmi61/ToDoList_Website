@@ -6,9 +6,9 @@ Flask-WTF
 WTForms
 Werkzeug
 Flask
-Flask-SQLAlchemySQLAlchemy
+Flask-SQLAlchemy
+SQLAlchemy
 gunicorn
 psycopg2-binary
 python-dotenv
 email_validator
-gevent
