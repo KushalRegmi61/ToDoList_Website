@@ -40,28 +40,93 @@ html {
 /* Navigation Links */
 .nav-link,
 .nav-item {
+  display: inline-flex;
+  align-items: center;
   font-family: "Open Sans", sans-serif;
-  font-style: normal;
   font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: #ffffff;
-  transition: color 0.3s ease;
+  font-weight: 700; /* Make the text bolder */
+  color: #eee; /* Light teal/cyan color to stand out from the rest */
+  letter-spacing: 2px; /* Spacing between the letters for a clean, modern look */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions for hover effects */
 }
 
-.nav-link:hover,
-.nav-item:hover {
-  color: var(--imp-text-color);
+/* Navigation Links */
+.nav-link,
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #eee;
+  letter-spacing: 2px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative; /* Required for the underline effect */
 }
 
-.nav-link {
-  transition: color 0.3s ease;
-}
+/* Hover Effect: Color and Slight Scale */
 .nav-link:hover {
-  color: #ffd700 !important; /* Gold color for hover effect */
+  color: #ffffff;
+  transform: scale(1.1);
 }
 
+/* White Underline Hover Effect */
+.nav-item:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff; /* White underline */
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+/* Prevent Dropdown Toggle from Scaling or Underline */
+.nav-item.dropdown .nav-link {
+  transition: none;
+}
+
+.nav-item.dropdown:hover .nav-link {
+  transform: none;
+}
+
+/* Remove Underline from Dropdown Items */
+.nav-item.dropdown:hover::after {
+  content: none;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  background-color: #333;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute !important;
+  z-index: 1050 !important;
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  color: #eee;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #444;
+  color: #ffffff;
+}
+
+/* Prevent Hover Effects on Dropdown Icons */
+.dropdown-item i {
+  margin-right: 0.5rem;
+  color: #eee;
+  font-size: 1.3rem;
+}
 /* General logo styling */
 .logo {
   display: inline-flex;
