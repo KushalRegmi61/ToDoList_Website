@@ -79,9 +79,9 @@ Explore the live version of the application: [ToDoList Live](https://todolist-we
 
 ## 🎥 Demo
 
-Here's a quick demonstration of the ToDoList app in action:
+Here's a quick demonstration of the ToDoList Website in action:
 
-![Website Demo](static/img/demo.gif)
+![Website Demo](static/assets/gif/demo.gif)
 
 ## 🌍 Contributing
 
